@@ -1,14 +1,19 @@
 package com.npi.entities;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="tb_socio")
 public class Socios {
 
 	@Id
@@ -24,6 +29,12 @@ public class Socios {
 	@Column(name="ativo")
 	private boolean ativo;
 	
+	@OneToMany(mappedBy="socio_id")
+	private List<Dependentes> dependentes = new ArrayList<>();
+	
+	
+	
+	
 	public Socios() {
 		
 	}
@@ -35,6 +46,16 @@ public class Socios {
 		this.renda = renda;
 		this.ativo = ativo;
 	}
+	
+
+	public List<Dependentes> getDependentes() {
+		return dependentes;
+	}
+
+	public void setDependentes(List<Dependentes> dependentes) {
+		this.dependentes = dependentes;
+	}
+
 
 	public Integer getId() {
 		return id;

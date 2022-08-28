@@ -49,7 +49,8 @@ public class DependentesService {
 		entity.setIdade(dto.getIdade());
 		entity.setNome(dto.getNome());
 		
-		Socios socio = sociosDao.getOne(dto.getId());
+		
+		Socios socio = sociosDao.getOne(dto.getSocio_id());
 		entity.setSocio_id(socio);
 		
 		dao.save(entity);

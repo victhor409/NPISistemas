@@ -11,20 +11,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.npi.dto.SociosDto;
-import com.npi.entities.Socios;
-import com.npi.service.SociosService;
+import com.npi.dto.DependentesDto;
+import com.npi.entities.Dependentes;
+import com.npi.service.DependentesService;
 
 @Controller
+@RequestMapping(value="/dependente")
 public class DependentesController {
 
 	@Autowired
-	private SociosService service;
+	private DependentesService service;
 	
 	@PostMapping
-	public ResponseEntity inserir(@RequestBody SociosDto dto) {
-		SociosDto newDto = service.inserir(dto);
+	public ResponseEntity inserir(@RequestBody DependentesDto dto) {
+		DependentesDto newDto = service.inserir(dto);
 		return ResponseEntity.ok().body(newDto); 
 	}
 	
@@ -35,14 +37,14 @@ public class DependentesController {
 	}
 	
 	@GetMapping
-	public ResponseEntity <List<Socios>> findAll(){
-		List<Socios> list=service.findAll();
+	public ResponseEntity <List<Dependentes>> findAll(){
+		List<Dependentes> list=service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	
 	@PutMapping("/{id}")
-	public ResponseEntity update (@PathVariable Integer id, @RequestBody Socios obj) {
+	public ResponseEntity update (@PathVariable Integer id, @RequestBody Dependentes obj) {
 		obj = service.updateData(id, obj);
 		return ResponseEntity.ok().body(obj);
 	}

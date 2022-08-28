@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.npi.dto.SociosDto;
 import com.npi.entities.Socios;
 import com.npi.service.SociosService;
 
 @Controller
+@RequestMapping(value="/socio")
 public class SociosController {
 
 	@Autowired

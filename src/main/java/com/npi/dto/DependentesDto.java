@@ -14,7 +14,7 @@ public class DependentesDto {
 	private Integer idade;
 	
 	
-	private Socios socio_id;
+	private Integer socio_id;
 	
 	
 	public DependentesDto() {
@@ -22,7 +22,7 @@ public class DependentesDto {
 	}
 	
 	
-	public DependentesDto(Integer id, String nome, Integer idade, Socios socio_id) {
+	public DependentesDto(Integer id, String nome, Integer idade,Integer socio_id) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -36,7 +36,7 @@ public class DependentesDto {
 		this.id = entity.getId();
 		this.nome = entity.getNome();
 		this.idade = entity.getIdade();
-		this.socio_id = entity.getSocio_id();
+		//this.socio_id = entity.getSocio_id();
 		
 		
 		
@@ -74,6 +74,21 @@ public class DependentesDto {
 	}
 
 
+	public Integer getSocio_id() {
+		return socio_id;
+	}
+
+
+	public void setSocio_id(Integer socio_id) {
+		this.socio_id = socio_id;
+	}
+	
+	
+	
+	
+	
+
+/*
 	public Socios getSocio_id() {
 		return socio_id;
 	}
@@ -82,4 +97,5 @@ public class DependentesDto {
 	public void setSocio_id(Socios socio_id) {
 		this.socio_id = socio_id;
 	}
+	*/
 }

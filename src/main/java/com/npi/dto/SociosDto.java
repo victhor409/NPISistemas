@@ -1,6 +1,8 @@
 package com.npi.dto;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.npi.entities.Socios;
 
@@ -18,6 +20,8 @@ public class SociosDto {
 	
 	
 	private boolean ativo;
+	
+	private List<DependentesDto> dependentes = new ArrayList<>();
 	
 
 	public SociosDto() {
@@ -37,11 +41,20 @@ public class SociosDto {
 		this.nome = entity.getNome();
 		this.renda = entity.getRenda();
 		this.ativo = entity.getAtivo();
+		this.dependentes = entity.getDependentes().stream().map(x-> new DependentesDto(x)).toList();
 	}
 	
 	
 	
 	
+
+	public List<DependentesDto> getDependentes() {
+		return dependentes;
+	}
+
+	public void setDependentes(List<DependentesDto> dependentes) {
+		this.dependentes = dependentes;
+	}
 
 	public Integer getId() {
 		return id;

@@ -4,9 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="tb_dependentes")
 public class Dependentes {
 
 	@Id
@@ -16,7 +19,11 @@ public class Dependentes {
 	private Integer idade;
 
 	@ManyToOne
+	@JoinColumn(name="socio_id")
 	private Socios socio_id;
+	
+	
+	
 	
 	public Dependentes() {
 		

@@ -8,8 +8,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.npi.dao.DependentesDao;
 import com.npi.dao.SociosDao;
+import com.npi.dto.DependentesDto;
 import com.npi.dto.SociosDto;
+import com.npi.entities.Dependentes;
 import com.npi.entities.Socios;
 
 @Service
@@ -17,6 +20,9 @@ public class SociosService {
 
 	@Autowired
 	private SociosDao dao;
+	
+	@Autowired
+	private DependentesDao dependenteDao;
 	
 	@Transactional
 	public List<Socios> findAll(){
@@ -40,16 +46,16 @@ public class SociosService {
 		
 		Socios entity = new Socios();
 		
-		entity.setId(dto.getId());
-		entity.setAtivo(dto.getAtivo());
-		entity.setNome(dto.getNome());
-		entity.setRenda(dto.getRenda());
+		for(DependentesDto d : dto.getDependentes()) {
+			Dependentes dependente = dependenteDao.getOne(d.getId());
+			entity.getDependentes().add(dependente);
+		}
 		
-		dao.save(entity);
+		entity=dao.save(entity);
 		
 		
 		
-		return dto;
+		return new SociosDto(entity);
 	}
 	
 	@Transactional
