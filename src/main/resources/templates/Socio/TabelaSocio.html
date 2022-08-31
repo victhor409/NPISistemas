@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+    <meta charset="UTF-8">
+
+
+    <head th:replace="~{layoutBase :: head}">
+    </head>
+    
+    <body>
+    
+    
+    
+    <div class="container mb-2">
+        <h1>Socio</h1>
+        <table class="table table-light">
+            <tr class="table-dark">
+                <th></th>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Renda</th>
+                <th scope="col">Ativo</th>
+             
+                <th scope="col"></th>
+            </tr>
+    
+            <tr th:each="socio : ${socios}">
+                <th scope="row"></th>
+                <td><span th:text="${socio.id}"></span></td>
+                <td><span th:text="${socio.nome}"></span></td>
+                <td>R$<span th:text="${socio.renda}"></td>
+                <td><span th:text="${socio.ativo}"></span></td>
+             
+                <td class="buttons "><a th:href="@{/form/{id}(id=${socio.id})}" th:method="get" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                    <a th:href="@{delete/{id}(id=${socio.id})}" th:method="delete"
+                       class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+            </tr>
+        </table>
+    
+        <a href="/form"><button class="btn btn-dark">Adicionar
+            socios</button></a>
+    </div>
+    </body>
+    
+    </html>
+    
+    
+
+</html>

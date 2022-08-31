@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+    <meta charset="UTF-8">
+
+
+    <head th:replace="~{layoutBase :: head}">
+    </head>
+    
+    <body>
+    
+    
+    
+    <div class="container mb-2">
+        <h1>dependente</h1>
+        <table class="table table-light">
+            <tr class="table-dark">
+                <th></th>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Idade</th>
+                
+             
+                <th scope="col"></th>
+            </tr>
+    
+            <tr th:each="dependente : ${dependentes}">
+                <th scope="row"></th>
+                <td><span th:text="${dependente.id}"></span></td>
+                <td><span th:text="${dependente.nome}"></span></td>
+                <td><span th:text="${dependente.idade}"></td>
+             
+             
+                <td class="buttons "><a th:href="@{/formDependentes/{id}(id=${dependente.id})}" th:method="get" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                    <a th:href="@{deleteDependentes/{id}(id=${dependente.id})}" th:method="delete"
+                       class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+            </tr>
+        </table>
+    
+        <a href="/Dependentes/formDependentes"><button class="btn btn-dark">Adicionar
+            dependente</button></a>
+    </div>
+    </body>
+    
+    </html>
+    
+    
+
+</html>

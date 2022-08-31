@@ -15,15 +15,14 @@ public class Dependentes {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String nome;
+	
 	private Integer idade;
 
 	@ManyToOne
 	@JoinColumn(name="socio_id")
 	private Socios socio_id;
-	
-	
-	
 	
 	public Dependentes() {
 		
